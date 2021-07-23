@@ -1,11 +1,10 @@
-import React from "react";
 // import PrivateRoute from "./components/PrivateRoute";
 import AddRecipe from "../components/AddRecipe";
 import SearchBar from "../components/SearchBar";
 import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
 import { Route, useHistory } from "react-router-dom";
 
-export default function HomePage() {
+export default function Home() {
   let history = useHistory();
   const logout = () => {
     history.push("/");
