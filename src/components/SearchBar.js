@@ -9,7 +9,8 @@ const useStyles = makeStyles({
         width: '60%',
     }
 
-    
+
+
 })
 
 export default function SearchBar() {
@@ -17,7 +18,8 @@ export default function SearchBar() {
 
     return (
         <Paper component="form" className={classes.root} variant="outlined">
-            <Select autoWidth="true" defaultValue="All Meals" >
+            <Select autoWidth="true" defaultValue="all" placeholder="ALL Meals">
+                <MenuItem value="all">All Meals</MenuItem>
                 <MenuItem value="breakfast">Breakfast</MenuItem>
                 <MenuItem value="lunch">Lunch</MenuItem>
                 <MenuItem value="dinner">Dinner</MenuItem>
