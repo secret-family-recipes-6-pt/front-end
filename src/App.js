@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import HomaPage from "./components/HomePage";
 import AddRecipe from "./components/AddRecipe";
-import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
+import SearchBar from "./components/SearchBar"
+import { Button, Toolbar, AppBar, Typography, Grid} from "@material-ui/core";
+
 
 function App() {
   const logout = () => {};
@@ -15,6 +17,7 @@ function App() {
           <Toolbar>
             <Grid container justifyContent="space-between">
               <Typography variant="h6">Secret Family Recipes</Typography>
+              <SearchBar />
               <Button onClick={logout} variant="contained">
                 Logout
               </Button>
