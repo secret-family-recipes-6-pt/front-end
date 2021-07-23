@@ -1,6 +1,7 @@
-import React from 'react';
-import { InputBase, IconButton, Paper, Select, MenuItem, Divider} from '@material-ui/core';
+import React, { useState } from 'react';
+import { InputBase, Paper, Select, MenuItem, Divider} from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles'
+
 
 const useStyles = makeStyles({
     root: {
@@ -25,10 +26,19 @@ const useStyles = makeStyles({
 
 export default function SearchBar() {
     const classes = useStyles();
+    const [searchForm, setSearchForm] = useState({
+        category: "all",
+        searchTerm: "",
+    });
+
+    const handleChange = event => {
+        const {value, name} = event.target;
+        setSearchForm({...searchForm, [name]: value})
+    }
 
     return (
-        <Paper component="form" className={classes.root} variant="outlined" >
-            <Select autoWidth="true" defaultValue="all" placeholder="ALL Meals" className={classes.dropdown} onChange={"change"}>
+        <Paper component="form" className={classes.root} variant="outlined" onChange={handleChange}>
+            <Select name="category" autoWidth={true} disableUnderline={true} className={classes.dropdown} defaultValue="all" placeholder="All Meals" onChange={handleChange}>
                 <MenuItem value="all">All Meals</MenuItem>
                 <MenuItem value="breakfast">Breakfast</MenuItem>
                 <MenuItem value="lunch">Lunch</MenuItem>
@@ -37,7 +47,7 @@ export default function SearchBar() {
                 <MenuItem value="snacks">Snacks</MenuItem>
             </Select>
             <Divider orientation="vertical" flexItem className={classes.divider}/>
-            <InputBase placeholder="Search" className={`${classes.searchInput}`}/>
+            <InputBase name="searchTerm" placeholder="Search" className={`${classes.searchInput}`}/>
         </Paper>
     )
 }
