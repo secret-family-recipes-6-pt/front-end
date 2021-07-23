@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import HomaPage from "./components/HomePage";
-import AddRecipe from "./components/AddRecipe";
+import AddEditRecipe from "./components/AddEditRecipe";
 import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
         }
         {
           //will need to be a private eventually
-          <Route exact path="/AddRecipe" component={AddRecipe} />
+          <Route exact path="/AddEditRecipe" component={AddEditRecipe} />
         }
       </div>
     </Router>
