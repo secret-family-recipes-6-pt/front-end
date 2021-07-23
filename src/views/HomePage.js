@@ -3,7 +3,7 @@ import React from "react";
 import AddRecipe from "../components/AddRecipe";
 import SearchBar from "../components/SearchBar";
 import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
-import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 
 export default function HomePage() {
   let history = useHistory();
