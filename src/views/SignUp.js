@@ -56,7 +56,7 @@ export default function SignUp() {
               color="primary"
               variant="contained"
               onClick={() => {
-                history.push("/home");
+                history.push("/");
               }}
               endIcon={<ArrowForwardIcon />}
             >
