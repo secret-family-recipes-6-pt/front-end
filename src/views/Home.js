@@ -1,5 +1,5 @@
 // import PrivateRoute from "./components/PrivateRoute";
-import AddRecipe from "../components/AddRecipe";
+import AddRecipe from "../components/AddEditRecipe";
 import SearchBar from "../components/SearchBar";
 import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
 import { Route, useHistory } from "react-router-dom";
