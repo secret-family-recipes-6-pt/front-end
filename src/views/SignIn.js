@@ -1,10 +1,9 @@
 import { Link, useHistory } from "react-router-dom";
-
 import { Grid, Paper, Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
-//  change paper to cards component
+//  change Paper to Cards component
 
 const useStyles = makeStyles((theme) => ({
   PapersStyle: {
@@ -25,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     height: "20%",
     width: "60%",
     borderRadius: "50px",
-    fontSize: "2rem",
+    fontSize: "1.75rem",
   },
 }));
 
@@ -33,11 +32,11 @@ export default function SignIn() {
   const classes = useStyles();
   let history = useHistory();
   return (
-    <form className="signIn-form">
+    <form className="signPage-form">
       <Paper elevation={10} className={classes.PapersStyle}>
-        <Grid container justifyContent="space-around" alignItems="center" id="signIn-grid-container">
-          <Grid className="signin-gric-item" alignItems="center" item sm={6} xs={12}>
-            <div className="signIn-grid-item">
+        <Grid container justifyContent="space-around" alignItems="center" className="signPage-grid-container">
+          <Grid alignItems="center" item sm={6} xs={12}>
+            <div className="signPage-grid-item">
               <h2 className={classes.titleStyle}>Sign In</h2>
 
               {/* email */}
@@ -48,8 +47,8 @@ export default function SignIn() {
             </div>
           </Grid>
 
-          <Grid className="signin-gric-item" alignItems="center" item sm={6} xs={12}>
-            <div className="signIn-grid-item">
+          <Grid alignItems="center" item sm={6} xs={12}>
+            <div className="signPage-grid-item">
               <Button
                 className={classes.ButtonStyle}
                 type="submit"
@@ -65,7 +64,9 @@ export default function SignIn() {
 
               <label style={{ fontSize: "1.5rem" }}>
                 Don't have an account?
-                <Link to="/signup"> Sign Up</Link>
+                <Link to="/signup">
+                  <span> Sign Up</span>
+                </Link>
               </label>
             </div>
           </Grid>
@@ -74,25 +75,3 @@ export default function SignIn() {
     </form>
   );
 }
-/* 
-
-<Grid>
-      <Paper elevation={10} className={classes.PaperStyle}>
-        <form className={classes.FormStyle}>
-           left section of form 
-          <div className={classes.leftSection}>
-            
-          </div>
-
-          {/* right section of form 
-          <div className={classes.leftSection}>
-            {/* submit login information */
-/*
-            
-
-            
-          </div>
-        </form>
-      </Paper>
-    </Grid>
-*/

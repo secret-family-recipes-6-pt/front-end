@@ -9,11 +9,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* Styling for SignIn Component */
-#signIn-grid-container {
+/* Styling for signPage Component */
+.signPage-grid-container {
   height: 100%;
 }
-.signIn-grid-item {
+.signPage-grid-item {
   height: 60vh;
   display: flex;
   justify-content: space-evenly;
@@ -21,12 +21,20 @@ code {
   align-items: center;
 }
 
+.signPage-grid-item label {
+  text-align: center;
+}
+
 @media only screen and (max-width: 600px) {
-  .signIn-grid-item {
+  .signPage-grid-item {
     height: 30vh;
   }
-  .signIn-grid-item h2 {
-    font-size: 2rem;
+  .signPage-grid-item h2 {
+    font-size: 2.5rem;
     text-align: "center";
+  }
+
+  .signPage-grid-item button {
+    font-size: 1.25rem;
   }
 }
