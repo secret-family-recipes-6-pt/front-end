@@ -1,61 +1,31 @@
 import { Link, useHistory } from "react-router-dom";
-import { Grid, Paper, Button, TextField, Typography } from "@material-ui/core";
+
+import { Grid, Paper, Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
-// const useStyles = makeStyles({
-//   FormStyle: {
-//     display: "flex",
-//     justifyContent: "space-around",
-//     height: "100%",
-//     flexDirection: "row",
-//   },
-
-//   leftSection: {
-//     width: "45%",
-//   },
-
-//   rightSection: {
-//     width: "45%",
-//   },
-
-//   titleStyle: {
-//     fontSize: "4rem",
-//   },
-
-//   PaperStyle: {
-//     padding: "30px",
-//     height: "70vh",
-//     width: "80%",
-//     margin: "5% auto",
-//   },
-// });
+//  change paper to cards component
 
 const useStyles = makeStyles((theme) => ({
-  FormStyle: {
-    // display: "flex",
-    // justifyContent: "space-around",
-    // height: "100%",
-    // flexDirection: "column",
-    // alignItems: "center",
+  PapersStyle: {
+    height: "70vh",
+    width: "80%",
+    margin: "5% auto 0 auto",
   },
-
-  leftSection: {
-    // width: "45%",
-  },
-
-  rightSection: {
-    // width: "45%",
-  },
-
   titleStyle: {
-    fontSize: "4rem",
+    fontSize: "5rem",
+    textAlign: "center",
   },
-
-  PaperStyle: {
-    // padding: "30px",
-    // height: "70vh",
-    // width: "80%",
-    // margin: "5% auto",
+  textFieldStyle: {
+    width: "70%",
+    padding: "2px",
+  },
+  ButtonStyle: {
+    marginTop: "5%",
+    height: "20%",
+    width: "60%",
+    borderRadius: "50px",
+    fontSize: "2rem",
   },
 }));
 
@@ -63,43 +33,66 @@ export default function SignIn() {
   const classes = useStyles();
   let history = useHistory();
   return (
-    <Grid>
+    <form className="signIn-form">
+      <Paper elevation={10} className={classes.PapersStyle}>
+        <Grid container justifyContent="space-around" alignItems="center" id="signIn-grid-container">
+          <Grid className="signin-gric-item" alignItems="center" item sm={6} xs={12}>
+            <div className="signIn-grid-item">
+              <h2 className={classes.titleStyle}>Sign In</h2>
+
+              {/* email */}
+              <TextField className={classes.textFieldStyle} label="Email" placeholder="Enter Email" type="email" fullWidth />
+
+              {/* password */}
+              <TextField className={classes.textFieldStyle} label="Password" placeholder="Enter Password" type="password" fullWidth />
+            </div>
+          </Grid>
+
+          <Grid className="signin-gric-item" alignItems="center" item sm={6} xs={12}>
+            <div className="signIn-grid-item">
+              <Button
+                className={classes.ButtonStyle}
+                type="submit"
+                color="primary"
+                variant="contained"
+                onClick={() => {
+                  history.push("/home");
+                }}
+                endIcon={<ArrowForwardIcon />}
+              >
+                Log In
+              </Button>
+
+              <label style={{ fontSize: "1.5rem" }}>
+                Don't have an account?
+                <Link to="/signup"> Sign Up</Link>
+              </label>
+            </div>
+          </Grid>
+        </Grid>
+      </Paper>
+    </form>
+  );
+}
+/* 
+
+<Grid>
       <Paper elevation={10} className={classes.PaperStyle}>
         <form className={classes.FormStyle}>
-          {/* left section of form */}
+           left section of form 
           <div className={classes.leftSection}>
-            <h2 className={classes.titleStyle}>Sign In</h2>
-
-            {/* email */}
-            <TextField label="Email" placeholder="Enter Email" type="email" />
-
-            {/* password */}
-            <TextField label="Password" placeholder="Enter Password" type="password" />
+            
           </div>
 
-          {/* right section of form */}
+          {/* right section of form 
           <div className={classes.leftSection}>
-            {/* submit login information */}
-            <Button
-              className={classes.ButtonStyle}
-              type="submit"
-              color="primary"
-              variant="contained"
-              onClick={() => {
-                history.push("/home");
-              }}
-            >
-              Sign In
-            </Button>
+            {/* submit login information */
+/*
+            
 
-            <Typography>
-              {" "}
-              Don't have an account?
-              <Link to="/signup"> Sign Up</Link>
-            </Typography>
+            
           </div>
         </form>
       </Paper>
     </Grid>
-  );
-}
+*/

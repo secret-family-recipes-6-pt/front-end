@@ -8,3 +8,25 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+/* Styling for SignIn Component */
+#signIn-grid-container {
+  height: 100%;
+}
+.signIn-grid-item {
+  height: 60vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .signIn-grid-item {
+    height: 30vh;
+  }
+  .signIn-grid-item h2 {
+    font-size: 2rem;
+    text-align: "center";
+  }
+}
