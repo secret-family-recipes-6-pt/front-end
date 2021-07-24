@@ -1,41 +1,28 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
-import HomaPage from "./components/HomePage";
-import AddEditRecipe from "./components/AddEditRecipe";
-import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import SignUp from "./views/SignUp";
+import SignIn from "./views/SignIn";
+import Home from "./views/Home";
+
 
 function App() {
-  const logout = () => {};
   return (
     <Router>
-      <div className="App">
-        <AppBar position="static">
-          <Toolbar>
-            <Grid container justifyContent="space-between">
-              <Typography variant="h6">Secret Family Recipes</Typography>
-              <Button onClick={logout} variant="contained">
-                Logout
-              </Button>
-            </Grid>
-          </Toolbar>
-        </AppBar>
+      <Switch>
+        <Route path="/home">
+          <Home />
+        </Route>
 
-        {
-          //Jose needs to build the private route first.
-          /* <PrivateRoute exact path="/private" component={HomaPage} /> */
-        }
+        <Route path="/signup">
+          <SignUp />
+        </Route>
 
-        {
-          //This is the route for login uncomment when done.
-          /* <Route exact path="/" component={Login} /> */
-        }
-        {
-          //will need to be a private eventually
-          <Route exact path="/AddEditRecipe" component={AddEditRecipe} />
-        }
-      </div>
+
+        <Route path="/">
+          <SignIn />
+        </Route>
+      </Switch>
     </Router>
   );
 }
