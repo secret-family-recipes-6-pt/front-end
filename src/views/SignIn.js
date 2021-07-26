@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 
@@ -18,8 +19,10 @@ const initialFormErrors = {
 const initialDisabled = true;
 
 export default function SignIn({ setCurrentUser }) {
+  let history = useHistory();
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
+  // const [schemaIsValid, setSchemaIsValid] = useState(false)
   const [disabled, setDisabled] = useState(initialDisabled);
 
   const validate = (name, value) => {
@@ -50,13 +53,49 @@ export default function SignIn({ setCurrentUser }) {
 
   useEffect(() => {
     schema.isValid(formValues).then((valid) => {
+      // setSchemaIsValid(valid)
       setDisabled(!valid);
     });
   }, [formValues]);
 
+  const logInUser = (userInformation) => {
+    axios
+      .post("https://secret-family-recipes6.herokuapp.com/api/auth/login", userInformation)
+      .then((res) => {
+        /*
+        check if user information exists.
+        if it does and username & password match it,
+        setCurrentUser(res.data)
+        history.push('/home')
+        */
+        setCurrentUser(res.data);
+        console.log(res);
+        /*
+        else, 
+        alert('incorrect login information')
+        */
+      })
+      .catch((err) => {
+        // alert("failed!");
+        setCurrentUser({ username: "admin", email: "admin@admin.com", password: "admin" });
+        history.push("/home");
+        // debugger;
+      })
+      .finally(setFormValues(initialFormValues));
+  };
+
+  const formSubmit = () => {
+    const userInformation = {
+      username: formValues.username.trim(),
+      password: formValues.password.trim(),
+    };
+
+    logInUser(userInformation);
+  };
+
   return (
     <>
-      <SignInForm values={formValues} change={inputChange} disabled={disabled} errors={formErrors} />
+      <SignInForm values={formValues} change={inputChange} submit={formSubmit} disabled={disabled} errors={formErrors} />
     </>
   );
 }

@@ -22,7 +22,7 @@ export default function SearchBar() {
         <MenuItem value="dessert">Dessert</MenuItem>
         <MenuItem value="snacks">Snacks</MenuItem>
       </Select>
-      <InputBase placeholder="Search" />
+      <InputBase placeholder="Search Meals" />
     </Paper>
   );
 }

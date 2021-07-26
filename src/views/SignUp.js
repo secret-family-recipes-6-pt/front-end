@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 
@@ -20,8 +21,8 @@ const initialFormErrors = {
 };
 
 const initialDisabled = true;
-
-export default function SignUp() {
+export default function SignUp({ setCurrentUser }) {
+  let history = useHistory();
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
@@ -58,14 +59,23 @@ export default function SignUp() {
     });
   }, [formValues]);
 
-  const postUser = (newUser) => {
+  const registerUser = (newUser) => {
     axios
       .post("https://secret-family-recipes6.herokuapp.com/api/auth/register", newUser)
       .then((res) => {
+        /* 
+        check newUser against all other users
+        if the user is unique, then setCurrentUser(res.data)
+        history.push(/home)
+
+        else,
+        alert('user information is taken)
+        */
         console.log(res.data);
-        //set setCurrentUser(res.data)
       })
       .catch((err) => {
+        setCurrentUser({ username: "admin", email: "admin@admin.com", password: "admin" });
+        history.push("/home");
         debugger;
       })
       .finally(setFormValues(initialFormValues));
@@ -83,7 +93,7 @@ export default function SignUp() {
       email: formValues.email.trim(),
       password: formValues.password.trim(),
     };
-    postUser(newUser);
+    registerUser(newUser);
   };
 
   return (

@@ -4,9 +4,12 @@ import SearchBar from "../components/SearchBar";
 import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
 import { Route, useHistory } from "react-router-dom";
 
-export default function Home() {
+export default function Home({ currentUser, setCurrentUser }) {
+  console.log(currentUser);
   let history = useHistory();
+
   const logout = () => {
+    setCurrentUser({ username: "", email: "", password: "" });
     history.push("/");
   };
 
@@ -35,7 +38,7 @@ export default function Home() {
       }
       {
         //will need to be a private eventually
-        <Route exact path="/AddRecipe" component={AddRecipe} />
+        <Route exact path="/home/AddRecipe" component={AddRecipe} />
       }
     </div>
   );
