@@ -1,8 +1,11 @@
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import { Grid, Paper, Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
+
 //  change Paper to Cards component
 
 const useStyles = makeStyles((theme) => ({
@@ -29,8 +32,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const initialState = {
+    username: "",
+    email: "",
+    password: "",
+  };
   const classes = useStyles();
-  let history = useHistory();
+  const history = useHistory();
+  const [credentials, setCredentials] = useState(initialState);
+
+  //The Register is not working fully yet.
+  const handleChanges = (e) => {
+    // console.log("value: ", e.target.value);
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
+  const submitSignUp = (e) => {
+    e.preventDefault();
+    // validate();
+
+    axiosWithAuth
+      .post("/auth/register", credentials)
+      .then((res) => {
+        console.log("happy path: ", res.data);
+        // localStorage.setItem("token", res.data);
+        // history.push("/private");
+      })
+      .catch((err) => {
+        console.log("sad path: ", err);
+      });
+  };
+
   return (
     <form className="signPage-form">
       <Paper elevation={10} className={classes.PapersStyle}>
@@ -55,6 +87,7 @@ export default function SignUp() {
               label="Username"
               placeholder="Enter Username"
               type="input"
+              onChange={handleChanges}
               fullWidth
             />
 
@@ -64,6 +97,7 @@ export default function SignUp() {
               label="Email"
               placeholder="Enter Email"
               type="email"
+              onChange={handleChanges}
               fullWidth
             />
 
@@ -73,6 +107,7 @@ export default function SignUp() {
               label="Password"
               placeholder="Enter Password"
               type="password"
+              onChange={handleChanges}
               fullWidth
             />
           </Grid>
@@ -89,9 +124,7 @@ export default function SignUp() {
               type="submit"
               color="primary"
               variant="contained"
-              onClick={() => {
-                history.push("/");
-              }}
+              onClick={submitSignUp}
               endIcon={<ArrowForwardIcon />}
             >
               Register
