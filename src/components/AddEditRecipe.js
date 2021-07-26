@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { MenuItem, Select, TextField, Button, Grid } from "@material-ui/core";
+import { RecipeContext } from "../context/RecipeContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,6 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function AddRecipe() {
+  const { recipe, setRecipe } = useContext(RecipeContext);
+
   const classes = useStyles();
 
   const [value, setValue] = useState("");
