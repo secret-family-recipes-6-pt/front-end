@@ -6,7 +6,7 @@ import { Route, useHistory } from "react-router-dom";
 
 export default function Home({ currentUser, setCurrentUser }) {
   console.log(currentUser);
-  let history = useHistory();
+  const history = useHistory();
 
   const logout = () => {
     setCurrentUser({ username: "", email: "", password: "" });

@@ -22,7 +22,7 @@ const initialFormErrors = {
 
 const initialDisabled = true;
 export default function SignUp({ setCurrentUser }) {
-  let history = useHistory();
+  const history = useHistory();
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);

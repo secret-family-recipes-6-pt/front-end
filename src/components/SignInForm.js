@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInForm({ values, change, submit, disabled }) {
   const classes = useStyles();
-  let history = useHistory();
+  const history = useHistory();
 
   const onSubmit = (evt) => {
     evt.preventDefault();

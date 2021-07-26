@@ -18,11 +18,10 @@ const initialFormErrors = {
 
 const initialDisabled = true;
 
-export default function SignIn({ setCurrentUser }) {
-  let history = useHistory();
+export default function SignIn({ allUsers, setCurrentUser }) {
+  const history = useHistory();
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
-  // const [schemaIsValid, setSchemaIsValid] = useState(false)
   const [disabled, setDisabled] = useState(initialDisabled);
 
   const validate = (name, value) => {
@@ -53,16 +52,17 @@ export default function SignIn({ setCurrentUser }) {
 
   useEffect(() => {
     schema.isValid(formValues).then((valid) => {
-      // setSchemaIsValid(valid)
       setDisabled(!valid);
     });
   }, [formValues]);
 
   const logInUser = (userInformation) => {
+    // should I check if allUsers includes userInformation before or after the axios.get()?
     axios
       .post("https://secret-family-recipes6.herokuapp.com/api/auth/login", userInformation)
       .then((res) => {
         /*
+        if (allUsers.includes(userInformation))
         check if user information exists.
         if it does and username & password match it,
         setCurrentUser(res.data)

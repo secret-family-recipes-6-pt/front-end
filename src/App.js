@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import axios from "axios";
 
 import SignUp from "./views/SignUp";
 import SignIn from "./views/SignIn";
@@ -8,8 +9,18 @@ import AddRecipe from "./components/AddEditRecipe";
 // import AddRecipe from "./views/AddEditRecipe";
 
 function App() {
+  const [allUsers, setAllUsers] = [];
   const [currentUser, setCurrentUser] = useState({ username: "", email: "", password: "" });
-  console.log(currentUser);
+
+  useEffect(() => {
+    axios
+      .get(" https://secret-family-recipes6.herokuapp.com/api/users/	")
+      .then((res) => {
+        setAllUsers(res.data);
+      })
+      .catch();
+  }, []);
+
   return (
     <Router>
       <Switch>
@@ -26,7 +37,7 @@ function App() {
         </Route>
 
         <Route path="/">
-          <SignIn setCurrentUser={setCurrentUser} />
+          <SignIn allUsers={allUsers} setCurrentUser={setCurrentUser} />
         </Route>
       </Switch>
     </Router>
