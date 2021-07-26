@@ -2,7 +2,6 @@ import { Link, useHistory } from "react-router-dom";
 import { Grid, Paper, Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-
 //  change Paper to Cards component
 
 const useStyles = makeStyles((theme) => ({
@@ -34,16 +33,33 @@ export default function SignIn() {
   return (
     <form className="signPage-form">
       <Paper elevation={10} className={classes.PapersStyle}>
-        <Grid container justifyContent="space-around" alignItems="center" className="signPage-grid-container">
+        <Grid
+          container
+          justifyContent="space-around"
+          alignItems="center"
+          className="signPage-grid-container"
+        >
           <Grid alignItems="center" item sm={6} xs={12}>
             <div className="signPage-grid-item">
               <h2 className={classes.titleStyle}>Sign In</h2>
 
               {/* email */}
-              <TextField className={classes.textFieldStyle} label="Email" placeholder="Enter Email" type="email" fullWidth />
+              <TextField
+                className={classes.textFieldStyle}
+                label="Email"
+                placeholder="Enter Email"
+                type="email"
+                fullWidth
+              />
 
               {/* password */}
-              <TextField className={classes.textFieldStyle} label="Password" placeholder="Enter Password" type="password" fullWidth />
+              <TextField
+                className={classes.textFieldStyle}
+                label="Password"
+                placeholder="Enter Password"
+                type="password"
+                fullWidth
+              />
             </div>
           </Grid>
 

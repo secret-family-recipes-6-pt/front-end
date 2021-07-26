@@ -1,5 +1,5 @@
 // import PrivateRoute from "./components/PrivateRoute";
-import AddRecipe from "../components/AddRecipe";
+import AddEditRecipe from "../components/AddEditRecipe";
 import SearchBar from "../components/SearchBar";
 import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
 import { Route, useHistory } from "react-router-dom";
@@ -32,10 +32,6 @@ export default function Home() {
       {
         //This is the route for login uncomment when done.
         /* <Route exact path="/" component={Login} /> */
-      }
-      {
-        //will need to be a private eventually
-        <Route exact path="/AddRecipe" component={AddRecipe} />
       }
     </div>
   );
