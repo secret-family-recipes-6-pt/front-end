@@ -1,20 +1,30 @@
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import HomePage from "./views/HomePage";
-import SigninPage from "./views/SigninPage";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import SignUp from "./views/SignUp";
+import SignIn from "./views/SignIn";
+import Home from "./views/Home";
+import AddEditRecipe from "./components/AddEditRecipe";
+
 function App() {
+  
+
   return (
     <Router>
-      <div>
-        <Link to="/home">Bring to home</Link>
-      </div>
-
       <Switch>
         <Route path="/home">
-          <HomePage />
+          <Home/>
         </Route>
 
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+        {
+          //will need to be a private eventually
+          <Route exact path="/AddEditRecipe" component={AddEditRecipe} />
+        }
+
         <Route path="/">
-          <SigninPage />
+          <SignIn />
         </Route>
       </Switch>
     </Router>

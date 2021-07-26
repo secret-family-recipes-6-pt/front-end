@@ -24,12 +24,10 @@ const useStyles = makeStyles({
 
 })
 
-export default function SearchBar() {
+export default function SearchBar(props) {
     const classes = useStyles();
-    const [searchForm, setSearchForm] = useState({
-        category: "all",
-        searchTerm: "",
-    });
+    const {searchForm, setSearchForm} = props;
+    
 
     const handleChange = event => {
         const {value, name} = event.target;
