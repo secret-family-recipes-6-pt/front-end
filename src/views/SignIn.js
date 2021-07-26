@@ -6,6 +6,41 @@ import axios from "axios";
 import schema from "../validation/SignInSchema";
 import SignInForm from "../components/SignInForm";
 
+/*
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
+
+const initialState = {
+    username: "",
+    email: "",
+    password: "",
+  };
+  const history = useHistory();
+  const [credentials, setCredentials] = useState(initialState);
+
+  //The SignIn is not working fully yet.
+  const handleChanges = (e) => {
+    // console.log("value: ", e.target.value);
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
+  const submitSignUp = (e) => {
+    e.preventDefault();
+    // validate();
+
+    axiosWithAuth
+      .post("/auth/register", credentials)
+      .then((res) => {
+        console.log("happy path: ", res.data);
+        // localStorage.setItem("token", res.data);
+        // history.push("/private");
+      })
+      .catch((err) => {
+        console.log("sad path: ", err);
+      });
+  };
+
+*/
+
 const initialFormValues = {
   username: "",
   password: "",
@@ -77,7 +112,6 @@ export default function SignIn({ allUsers, setCurrentUser }) {
       })
       .catch((err) => {
         // alert("failed!");
-        setCurrentUser({ username: "admin", email: "admin@admin.com", password: "admin" });
         history.push("/home");
         // debugger;
       })

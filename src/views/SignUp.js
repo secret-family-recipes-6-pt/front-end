@@ -3,10 +3,42 @@ import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 
-// installed yup and axios; created schema
-
 import schema from "../validation/signUpSchema";
 import SignUpForm from "../components/SignUpForm";
+
+/*
+ const initialState = {
+    username: "",
+    email: "",
+    password: "",
+  };
+  const classes = useStyles();
+  const history = useHistory();
+  const [credentials, setCredentials] = useState(initialState);
+
+  //The Register is not working fully yet.
+  const handleChanges = (e) => {
+    // console.log("value: ", e.target.value);
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
+  const submitSignUp = (e) => {
+    e.preventDefault();
+    // validate();
+
+    axiosWithAuth
+      .post("/auth/register", credentials)
+      .then((res) => {
+        console.log("happy path: ", res.data);
+        // localStorage.setItem("token", res.data);
+        // history.push("/private");
+      })
+      .catch((err) => {
+        console.log("sad path: ", err);
+      });
+  };
+
+*/
 
 const initialFormValues = {
   username: "",
@@ -82,12 +114,6 @@ export default function SignUp({ setCurrentUser }) {
   };
 
   const formSubmit = () => {
-    /* Axios.get all users. If the newUser has the same username as another, don't allow them to progress to the next page and give matching username error 
-    
-    Break this function and setButton to disabled
-
-    // pass setCurrentUser() to whatever the newuser is, passed down from the parent (App.js). if currentUser = [] then do this
-    */
     const newUser = {
       username: formValues.username.trim(),
       email: formValues.email.trim(),

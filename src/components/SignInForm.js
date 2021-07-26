@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Grid, Paper, Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
@@ -30,12 +30,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInForm({ values, change, submit, disabled }) {
   const classes = useStyles();
-  const history = useHistory();
-
   const onSubmit = (evt) => {
     evt.preventDefault();
     submit();
-    // history.push("/");
   };
 
   const onChange = (evt) => {
