@@ -1,7 +1,10 @@
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Grid, Paper, Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
+
 //  change Paper to Cards component
 
 const useStyles = makeStyles((theme) => ({
@@ -29,7 +32,35 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-  let history = useHistory();
+  const initialState = {
+    username: "",
+    email: "",
+    password: "",
+  };
+  const history = useHistory();
+  const [credentials, setCredentials] = useState(initialState);
+
+  //The SignIn is not working fully yet.
+  const handleChanges = (e) => {
+    // console.log("value: ", e.target.value);
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
+  const submitSignUp = (e) => {
+    e.preventDefault();
+    // validate();
+
+    axiosWithAuth
+      .post("/auth/register", credentials)
+      .then((res) => {
+        console.log("happy path: ", res.data);
+        // localStorage.setItem("token", res.data);
+        // history.push("/private");
+      })
+      .catch((err) => {
+        console.log("sad path: ", err);
+      });
+  };
   return (
     <form className="signPage-form">
       <Paper elevation={10} className={classes.PapersStyle}>
@@ -49,6 +80,7 @@ export default function SignIn() {
                 label="Email"
                 placeholder="Enter Email"
                 type="email"
+                onChange={handleChanges}
                 fullWidth
               />
 
@@ -58,6 +90,7 @@ export default function SignIn() {
                 label="Password"
                 placeholder="Enter Password"
                 type="password"
+                onChange={handleChanges}
                 fullWidth
               />
             </div>
@@ -70,9 +103,7 @@ export default function SignIn() {
                 type="submit"
                 color="primary"
                 variant="contained"
-                onClick={() => {
-                  history.push("/home");
-                }}
+                onClick={submitSignUp}
                 endIcon={<ArrowForwardIcon />}
               >
                 Log In
