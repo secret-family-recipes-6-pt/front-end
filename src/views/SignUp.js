@@ -53,7 +53,7 @@ const initialFormErrors = {
 };
 
 const initialDisabled = true;
-export default function SignUp({ setCurrentUser }) {
+export default function SignUp() {
   const history = useHistory();
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -106,7 +106,6 @@ export default function SignUp({ setCurrentUser }) {
         console.log(res.data);
       })
       .catch((err) => {
-        setCurrentUser({ username: "admin", email: "admin@admin.com", password: "admin" });
         history.push("/home");
         debugger;
       })

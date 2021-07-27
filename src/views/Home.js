@@ -1,14 +1,17 @@
 // import PrivateRoute from "./components/PrivateRoute";
 import SearchBar from "../components/SearchBar";
 import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
+import React, { useState } from "react";
 
-export default function Home({ currentUser, setCurrentUser }) {
-  console.log(currentUser);
-  const history = useHistory();
+export default function Home() {
+  const [searchForm, setSearchForm] = useState({
+    category: "all",
+    searchTerm: "",
+  });
 
+  let history = useHistory();
   const logout = () => {
-    setCurrentUser({ username: "", email: "", password: "" });
     history.push("/");
   };
 
@@ -18,7 +21,7 @@ export default function Home({ currentUser, setCurrentUser }) {
         <Toolbar>
           <Grid container justifyContent="space-between">
             <Typography variant="h6">Secret Family Recipes</Typography>
-            <SearchBar />
+            <SearchBar searchForm={searchForm} setSearchForm={setSearchForm} />
             <Button onClick={logout} variant="contained">
               Logout
             </Button>

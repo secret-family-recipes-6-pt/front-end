@@ -53,7 +53,7 @@ const initialFormErrors = {
 
 const initialDisabled = true;
 
-export default function SignIn({ allUsers, setCurrentUser }) {
+export default function SignIn() {
   const history = useHistory();
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -97,13 +97,11 @@ export default function SignIn({ allUsers, setCurrentUser }) {
       .post("https://secret-family-recipes6.herokuapp.com/api/auth/login", userInformation)
       .then((res) => {
         /*
-        if (allUsers.includes(userInformation))
         check if user information exists.
         if it does and username & password match it,
         setCurrentUser(res.data)
         history.push('/home')
         */
-        setCurrentUser(res.data);
         console.log(res);
         /*
         else, 

@@ -10,18 +10,6 @@ import AddEditRecipe from "./views/AddEditRecipe";
 import { RecipeContext } from "./context/RecipeContext";
 
 function App() {
-  const [allUsers, setAllUsers] = [];
-  const [currentUser, setCurrentUser] = useState({ username: "", email: "", password: "" });
-
-  useEffect(() => {
-    axios
-      .get(" https://secret-family-recipes6.herokuapp.com/api/users/")
-      .then((res) => {
-        setAllUsers(res.data);
-      })
-      .catch();
-  }, []);
-
   const [recipe, setRecipe] = useState(null);
   const providerValue = useMemo(() => ({ recipe, setRecipe }), [recipe, setRecipe]);
   return (
@@ -34,15 +22,15 @@ function App() {
             </Route>
 
             <Route path="/home">
-              <Home currentUser={currentUser} setCurrentUser={setCurrentUser} />
+              <Home />
             </Route>
 
             <Route path="/signup">
-              <SignUp setCurrentUser={setCurrentUser} />
+              <SignUp />
             </Route>
 
             <Route path="/">
-              <SignIn allUsers={allUsers} setCurrentUser={setCurrentUser} />
+              <SignIn />
             </Route>
           </Switch>
         </Router>
