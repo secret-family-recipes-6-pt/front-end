@@ -1,38 +1,15 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { Grid, Paper, Button, TextField } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import * as yup from "yup";
+import axios from "axios";
+
+import schema from "../validation/SignInSchema";
+import SignInForm from "../components/SignInForm";
+
+/*
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
 
-//  change Paper to Cards component
-
-const useStyles = makeStyles((theme) => ({
-  PapersStyle: {
-    height: "70vh",
-    width: "80%",
-    margin: "5% auto 0 auto",
-  },
-  titleStyle: {
-    fontSize: "5rem",
-    textAlign: "center",
-  },
-  textFieldStyle: {
-    width: "70%",
-    padding: "2px",
-  },
-  ButtonStyle: {
-    marginTop: "5%",
-    height: "20%",
-    width: "60%",
-    borderRadius: "50px",
-    fontSize: "1.75rem",
-  },
-}));
-
-export default function SignIn() {
-  const classes = useStyles();
-  const initialState = {
+const initialState = {
     username: "",
     email: "",
     password: "",
@@ -61,64 +38,96 @@ export default function SignIn() {
         console.log("sad path: ", err);
       });
   };
+
+*/
+
+const initialFormValues = {
+  username: "",
+  password: "",
+};
+
+const initialFormErrors = {
+  username: "",
+  password: "",
+};
+
+const initialDisabled = true;
+
+export default function SignIn() {
+  const history = useHistory();
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [disabled, setDisabled] = useState(initialDisabled);
+
+  const validate = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then((valid) => {
+        setFormErrors({
+          ...formErrors,
+          [name]: "",
+        });
+      })
+      .catch((err) => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0],
+        });
+      });
+  };
+
+  const inputChange = (name, value) => {
+    validate(name, value);
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
+
+  const logInUser = (userInformation) => {
+    // should I check if allUsers includes userInformation before or after the axios.get()?
+    axios
+      .post("https://secret-family-recipes6.herokuapp.com/api/auth/login", userInformation)
+      .then((res) => {
+        /*
+        check if user information exists.
+        if it does and username & password match it,
+        setCurrentUser(res.data)
+        history.push('/home')
+        */
+        console.log(res);
+        /*
+        else, 
+        alert('incorrect login information')
+        */
+      })
+      .catch((err) => {
+        // alert("failed!");
+        history.push("/home");
+        // debugger;
+      })
+      .finally(setFormValues(initialFormValues));
+  };
+
+  const formSubmit = () => {
+    const userInformation = {
+      username: formValues.username.trim(),
+      password: formValues.password.trim(),
+    };
+
+    logInUser(userInformation);
+  };
+
   return (
-    <form className="signPage-form">
-      <Paper elevation={10} className={classes.PapersStyle}>
-        <Grid
-          container
-          justifyContent="space-around"
-          alignItems="center"
-          className="signPage-grid-container"
-        >
-          <Grid alignItems="center" item sm={6} xs={12}>
-            <div className="signPage-grid-item">
-              <h2 className={classes.titleStyle}>Sign In</h2>
-
-              {/* email */}
-              <TextField
-                className={classes.textFieldStyle}
-                label="Email"
-                placeholder="Enter Email"
-                type="email"
-                onChange={handleChanges}
-                fullWidth
-              />
-
-              {/* password */}
-              <TextField
-                className={classes.textFieldStyle}
-                label="Password"
-                placeholder="Enter Password"
-                type="password"
-                onChange={handleChanges}
-                fullWidth
-              />
-            </div>
-          </Grid>
-
-          <Grid alignItems="center" item sm={6} xs={12}>
-            <div className="signPage-grid-item">
-              <Button
-                className={classes.ButtonStyle}
-                type="submit"
-                color="primary"
-                variant="contained"
-                onClick={submitSignUp}
-                endIcon={<ArrowForwardIcon />}
-              >
-                Log In
-              </Button>
-
-              <label style={{ fontSize: "1.5rem" }}>
-                Don't have an account?
-                <Link to="/signup">
-                  <span> Sign Up</span>
-                </Link>
-              </label>
-            </div>
-          </Grid>
-        </Grid>
-      </Paper>
-    </form>
+    <>
+      <SignInForm values={formValues} change={inputChange} submit={formSubmit} disabled={disabled} errors={formErrors} />
+    </>
   );
 }

@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function AddRecipe() {
+export default function AddEditRecipe() {
   const { recipe, setRecipe } = useContext(RecipeContext);
 
   const classes = useStyles();
@@ -26,14 +26,7 @@ export default function AddRecipe() {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justify="center"
-        style={{ minHeight: "100vh" }}
-      >
+      <Grid container spacing={0} direction="column" alignItems="center" justify="center" style={{ minHeight: "100vh" }}>
         <Grid item xs={3}>
           <div>
             <TextField
@@ -55,12 +48,7 @@ export default function AddRecipe() {
             />
           </div>
           <div>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={category}
-              onChange={handleChange}
-            >
+            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={category} onChange={handleChange}>
               <MenuItem value="Select One">Select One</MenuItem>
               <MenuItem value="Breakfast">Breakfast</MenuItem>
               <MenuItem value="Lunch">Lunch</MenuItem>
