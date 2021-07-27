@@ -17,7 +17,7 @@ https://docs.google.com/document/d/17rlUT4IbysGOK95MHYjPWXgdpRkupj4qbBDxGy0P5So/
 
 ## recipes
 
-| Type | Endpoint              | Description                                 | Protected | Required   | Error returns
+| Type | Endpoint              | Description                                 | Protected | Required   | Error returns |
 | ---- | --------------------- | ------------------------------------------- | --------- | -----------| ------------------------------------ |
 | GET  | /api/recipes/user/:id | Fetch all Recipes by user_id                | Yes       | valid user_id | (empty array if user_id invalid)|
 | GET  | /api/recipes/:id      | Fetch one Recipe by recipe_id               | Yes       | valid recipe_id  | (server error if id invalid) |
@@ -29,7 +29,7 @@ https://docs.google.com/document/d/17rlUT4IbysGOK95MHYjPWXgdpRkupj4qbBDxGy0P5So/
 
 ## ingredients
 
-| Type | Endpoint     | Description                                    | Protected | Required            |
+| Type | Endpoint     | Description                                    | Protected | Required            | Error returns |
 | ---- | ------------ | ---------------------------------------------- | --------- | ------------------- | ------------------------------- |
 | GET  | /api/ing/:id | Get an Ingredient by ingredient_id             | Yes       | valid ingredient_id | (nothing returns on invalid id) |
 | PUT  | /api/ing/:id | Update an existing Ingredient by ingredient_id | Yes       | valid ingredient_id | (server error if id invalid)    |
@@ -37,7 +37,7 @@ https://docs.google.com/document/d/17rlUT4IbysGOK95MHYjPWXgdpRkupj4qbBDxGy0P5So/
 
 ## instructions
 
-| Type | Endpoint      | Description                                      | Protected | Required             |
+| Type | Endpoint      | Description                                      | Protected | Required             | Error returns |
 | ---- | ------------- | ------------------------------------------------ | --------- | -------------------- | ------------------------------- |
 | GET  | /api/inst/:id | Get an existing Instruction by instruction_id    | Yes       | valid instruction_id | (nothing returns on invalid id) |
 | PUT  | /api/inst/:id | Update an existing Instruction by instruction_id | Yes       | valid instruction_id | (server error if id invalid)    |
@@ -47,7 +47,7 @@ https://docs.google.com/document/d/17rlUT4IbysGOK95MHYjPWXgdpRkupj4qbBDxGy0P5So/
 
 ## users
 
-| Type | Endpoint       | Description                               | Protected | Required      |
+| Type | Endpoint       | Description                               | Protected | Required      | Error returns |
 | ---- | -------------- | ----------------------------------------- | --------- | ------------- | -------------------------------- |
 | GET  | /api/users/    | Get all Users                             | Yes       | nothing       |
 | GET  | /api/users/:id | Get all Users by user_id                  | Yes       | valid user_id | (nothing returns on invalid id)  |
