@@ -8,17 +8,24 @@ import Home from "./views/Home";
 import AddEditRecipe from "./views/AddEditRecipe";
 
 import { RecipeContext } from "./context/RecipeContext";
+import RecipePage from "./views/RecipePage";
 
 function App() {
   const [recipe, setRecipe] = useState(null);
-  const providerValue = useMemo(() => ({ recipe, setRecipe }), [recipe, setRecipe]);
+  const providerValue = useMemo(
+    () => ({ recipe, setRecipe }),
+    [recipe, setRecipe]
+  );
   return (
     <div className="App">
       <RecipeContext.Provider value={providerValue}>
         <Router>
           <Switch>
-            <Route path="/home/AddEditRecipe">
+            <Route path="/AddEditRecipe">
               <AddEditRecipe />
+            </Route>
+            <Route path="/RecipePage">
+              <RecipePage />
             </Route>
 
             <Route path="/home">
