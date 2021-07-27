@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import React, { useState, useMemo, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useMemo } from "react";
 
 import SignUp from "./views/SignUp";
 import SignIn from "./views/SignIn";
@@ -8,14 +7,10 @@ import Home from "./views/Home";
 import AddEditRecipe from "./views/AddEditRecipe";
 
 import { RecipeContext } from "./context/RecipeContext";
-import RecipePage from "./views/RecipePage";
 
 function App() {
   const [recipe, setRecipe] = useState(null);
-  const providerValue = useMemo(
-    () => ({ recipe, setRecipe }),
-    [recipe, setRecipe]
-  );
+  const providerValue = useMemo(() => ({ recipe, setRecipe }), [recipe, setRecipe]);
   return (
     <div className="App">
       <RecipeContext.Provider value={providerValue}>
@@ -23,9 +18,6 @@ function App() {
           <Switch>
             <Route path="/AddEditRecipe">
               <AddEditRecipe />
-            </Route>
-            <Route path="/RecipePage">
-              <RecipePage />
             </Route>
 
             <Route path="/home">

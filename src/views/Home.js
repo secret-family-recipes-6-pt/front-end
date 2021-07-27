@@ -1,8 +1,9 @@
 // import PrivateRoute from "./components/PrivateRoute";
 import SearchBar from "../components/SearchBar";
 import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
-import { Route, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
+import RecipeCards from "../components/RecipeCards";
 
 export default function Home() {
   const [searchForm, setSearchForm] = useState({
@@ -28,6 +29,8 @@ export default function Home() {
           </Grid>
         </Toolbar>
       </AppBar>
+
+      <RecipeCards />
 
       {
         //Jose needs to build the private route first.
