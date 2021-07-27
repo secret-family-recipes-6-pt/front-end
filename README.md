@@ -18,7 +18,7 @@ https://docs.google.com/document/d/17rlUT4IbysGOK95MHYjPWXgdpRkupj4qbBDxGy0P5So/
 ## recipes
 
 | Type | Endpoint              | Description                                 | Protected | Required   | Error returns
-| ---- | --------------------- | ------------------------------------------- | --------- | -----------| ------------------------------------ | -------------------------------- |
+| ---- | --------------------- | ------------------------------------------- | --------- | -----------| ------------------------------------ |
 | GET  | /api/recipes/user/:id | Fetch all Recipes by user_id                | Yes       | valid user_id | (empty array if user_id invalid)|
 | GET  | /api/recipes/:id      | Fetch one Recipe by recipe_id               | Yes       | valid recipe_id  | (server error if id invalid) |
 | POST | /api/recipes/user/:id | Add a new user Recipe by user_id            | Yes       | valid user_id, recipe_name | (server error if id invalid)|
