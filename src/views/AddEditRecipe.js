@@ -26,12 +26,19 @@ export default function AddEditRecipe() {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <Grid container spacing={0} direction="column" alignItems="center" justify="center" style={{ minHeight: "100vh" }}>
-        <Grid item xs={3}>
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: "100vh" }}
+      >
+        <Grid item xs={12}>
           <div>
             <TextField
               id="outlined-basic"
-              label="Recipe Name"
+              label="Name"
               variant="outlined"
               // value={value}
               onChange={handleChange}
@@ -41,14 +48,19 @@ export default function AddEditRecipe() {
             {" "}
             <TextField
               id="outlined-basic"
-              label="Source of Recipe"
+              label="Source"
               variant="outlined"
               // value={value}
               onChange={handleChange}
             />
           </div>
           <div>
-            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={category} onChange={handleChange}>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={category}
+              onChange={handleChange}
+            >
               <MenuItem value="Select One">Select One</MenuItem>
               <MenuItem value="Breakfast">Breakfast</MenuItem>
               <MenuItem value="Lunch">Lunch</MenuItem>
@@ -56,6 +68,17 @@ export default function AddEditRecipe() {
               <MenuItem value="Desert">Desert</MenuItem>
               <MenuItem value="Snacks">Snacks</MenuItem>
             </Select>
+          </div>
+          <div>
+            <TextField
+              id="outlined-multiline-static"
+              label="Description"
+              multiline
+              rows={8}
+              variant="outlined"
+              // value={value}
+              onChange={handleChange}
+            />
           </div>
           <div>
             <TextField
