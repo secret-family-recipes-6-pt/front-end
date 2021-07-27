@@ -3,8 +3,15 @@ import AddEditRecipe from "../components/AddEditRecipe";
 import SearchBar from "../components/SearchBar";
 import { Button, Toolbar, AppBar, Typography, Grid } from "@material-ui/core";
 import { Route, useHistory } from "react-router-dom";
+import React, { useState } from 'react';
 
 export default function Home() {
+
+  const [searchForm, setSearchForm] = useState({
+        category: "all",
+        searchTerm: "",
+    });
+
   let history = useHistory();
   const logout = () => {
     history.push("/");
@@ -16,7 +23,7 @@ export default function Home() {
         <Toolbar>
           <Grid container justifyContent="space-between">
             <Typography variant="h6">Secret Family Recipes</Typography>
-            <SearchBar />
+            <SearchBar searchForm ={searchForm} setSearchForm = {setSearchForm}/>
             <Button onClick={logout} variant="contained">
               Logout
             </Button>
