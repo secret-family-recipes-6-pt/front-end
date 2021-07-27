@@ -33,7 +33,7 @@ export default function SearchBar(props) {
 
   return (
     <Paper component="form" className={classes.root} variant="outlined" onChange={handleChange}>
-      <Select name="category" autoWidth={true} disableUnderline={true} className={classes.dropdown} defaultValue="all" placeholder="All Meals" onChange={handleChange}>
+      <Select name="mealCategory" autoWidth={true} disableUnderline={true} className={classes.dropdown} defaultValue="all" placeholder="All Meals" onChange={handleChange}>
         <MenuItem value="all">All Meals</MenuItem>
         <MenuItem value="breakfast">Breakfast</MenuItem>
         <MenuItem value="lunch">Lunch</MenuItem>

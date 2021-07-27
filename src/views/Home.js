@@ -7,7 +7,7 @@ import RecipeCards from "../components/RecipeCards";
 
 export default function Home() {
   const [searchForm, setSearchForm] = useState({
-    category: "all",
+    searchCategory: "all",
     searchTerm: "",
   });
 
@@ -30,7 +30,7 @@ export default function Home() {
         </Toolbar>
       </AppBar>
 
-      <RecipeCards />
+      <RecipeCards searchForm={searchForm}/>
 
       {
         //Jose needs to build the private route first.

@@ -2,17 +2,25 @@ import { Container, Grid } from "@material-ui/core";
 import { cardsInformation } from "../dummyData";
 import RecipeCard from "./RecipeCard";
 
-export default function RecipeCards() {
+export default function RecipeCards({searchForm}) {
+  const {searchCategory, searchTerm} = searchForm;
+
   return (
     <Container>
       <Grid spacing={6} container justifyContent="center" alignItems="baseline">
         {cardsInformation.map((cardInfo, index) => {
-          return (
-            <Grid item key={index} xs={12} md={6} lg={4}>
-              <RecipeCard cardInfo={cardInfo} />
-            </Grid>
-          );
-        })}
+          if (category === "all" && searchTerm===""){
+            return (
+              <Grid item key={index} xs={12} md={6} lg={4}>
+                <RecipeCard cardInfo={cardInfo} />
+              </Grid>
+            );} 
+          else if (cardInfo.name.includes(searchTerm) && (cardInfo.category === searchCategory)){
+
+          }
+
+          }
+        )}
       </Grid>
     </Container>
   );
