@@ -5,7 +5,7 @@ import axios from "axios";
 import SignUp from "./views/SignUp";
 import SignIn from "./views/SignIn";
 import Home from "./views/Home";
-import AddEditRecipe from "./components/AddEditRecipe";
+import AddEditRecipe from "./views/AddEditRecipe";
 
 import { RecipeContext } from "./context/RecipeContext";
 
@@ -29,7 +29,7 @@ function App() {
       <RecipeContext.Provider value={providerValue}>
         <Router>
           <Switch>
-            <Route path="/home/add-edit-recipe">
+            <Route path="/home/AddEditRecipe">
               <AddEditRecipe />
             </Route>
 
