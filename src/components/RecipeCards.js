@@ -15,13 +15,20 @@ export default function RecipeCards({searchForm}) {
                 <RecipeCard cardInfo={cardInfo} />
               </Grid>
             );} 
-          else if (cardInfo.name.includes(searchTerm) && (cardInfo.category === searchCategory || searchCategory === "all")){
+          else if (cardInfo.name.toLowerCase().includes(searchTerm.toLowerCase()) && (cardInfo.category === searchCategory || searchCategory === "all")){
             return (
               <Grid item key={index} xs={12} md={6} lg={4}>
                 <RecipeCard cardInfo={cardInfo} />
               </Grid>
             );}
-            else{
+            else if (searchTerm==="" && cardInfo.category === searchCategory) {
+              return (
+              <Grid item key={index} xs={12} md={6} lg={4}>
+                <RecipeCard cardInfo={cardInfo} />
+              </Grid>
+            );
+            }
+            else {
               //pass
             }
 
