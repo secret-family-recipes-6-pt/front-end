@@ -1,15 +1,6 @@
 import React from "react";
 import { Typography, Button, Card, makeStyles, CardContent, CardActions, Grid } from "@material-ui/core";
 
-// useEffect(() => {
-//   axiosWithAuth()
-//     .get("/recipes/user/:id")
-//     .then((res) => {
-//       console.log("respone: ", res.data);
-//       return res.data;
-//     })
-//     .catch((err) => console.log(err));
-// }, []);
 
 const useStyles = makeStyles({
   root: {
