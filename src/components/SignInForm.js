@@ -43,22 +43,52 @@ export default function SignInForm({ values, change, submit, disabled }) {
   return (
     <form onSubmit={onSubmit} className="signPage-form">
       <Paper elevation={10} className={classes.PapersStyle}>
-        <Grid container justifyContent="space-around" alignItems="center" className="signPage-grid-container">
+        <Grid
+          container
+          justifyContent="space-around"
+          alignItems="center"
+          className="signPage-grid-container"
+        >
           <Grid item sm={6} xs={12}>
             <div className="signPage-grid-item">
               <h2 className={classes.titleStyle}>Sign In</h2>
 
               {/* email */}
-              <TextField className={classes.textFieldStyle} label="Username" placeholder="Enter Username" type="text" name="username" value={values.username} onChange={onChange} fullWidth />
+              <TextField
+                className={classes.textFieldStyle}
+                label="Username"
+                placeholder="Enter Username"
+                type="text"
+                name="username"
+                value={values.username}
+                onChange={onChange}
+                fullWidth
+              />
 
               {/* password */}
-              <TextField className={classes.textFieldStyle} label="Password" placeholder="Enter Password" type="password" name="password" value={values.password} onChange={onChange} fullWidth />
+              <TextField
+                className={classes.textFieldStyle}
+                label="Password"
+                placeholder="Enter Password"
+                type="password"
+                name="password"
+                value={values.password}
+                onChange={onChange}
+                fullWidth
+              />
             </div>
           </Grid>
 
           <Grid item sm={6} xs={12}>
             <div className="signPage-grid-item">
-              <Button className={classes.ButtonStyle} type="submit" color="primary" variant="contained" disabled={disabled} endIcon={<ArrowForwardIcon />}>
+              <Button
+                className={classes.ButtonStyle}
+                type="submit"
+                color="primary"
+                variant="contained"
+                disabled={disabled}
+                endIcon={<ArrowForwardIcon />}
+              >
                 Log In
               </Button>
 

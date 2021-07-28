@@ -13,6 +13,8 @@ export default function Home() {
 
   let history = useHistory();
   const logout = () => {
+    console.log("Logged out success!");
+    localStorage.removeItem("token");
     history.push("/");
   };
 
@@ -30,17 +32,7 @@ export default function Home() {
         </Toolbar>
       </AppBar>
 
-      <RecipeCards searchForm={searchForm}/>
-
-      {
-        //Jose needs to build the private route first.
-        /* <PrivateRoute exact path="/private" component={HomaPage} /> */
-      }
-
-      {
-        //This is the route for login uncomment when done.
-        /* <Route exact path="/" component={Login} /> */
-      }
+      <RecipeCards searchForm={searchForm} />
     </div>
   );
 }

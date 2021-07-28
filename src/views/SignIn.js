@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
-import axios from "axios";
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
 
 import schema from "../validation/SignInSchema";
 import SignInForm from "../components/SignInForm";
+import axios from "axios";
 
 /*
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
@@ -94,23 +95,20 @@ export default function SignIn() {
   const logInUser = (userInformation) => {
     // should I check if allUsers includes userInformation before or after the axios.get()?
     axios
-      .post("https://secret-family-recipes6.herokuapp.com/api/auth/login", userInformation)
+      .post(
+        "https://secret-family-recipes6.herokuapp.com/api/auth/login",
+        userInformation
+      )
       .then((res) => {
-        /*
-        check if user information exists.
-        if it does and username & password match it,
-        setCurrentUser(res.data)
-        history.push('/home')
-        */
-        console.log(res);
-        /*
-        else, 
-        alert('incorrect login information')
-        */
+
+        // console.log("happy path: ", res.data);
+        // console.log("MY token", res.data.token);
+        localStorage.setItem("token", res.data.token);
+        history.push("/home");
       })
       .catch((err) => {
         // alert("failed!");
-        history.push("/home");
+        console.log("sad path: ", err);
         // debugger;
       })
       .finally(setFormValues(initialFormValues));
@@ -127,7 +125,13 @@ export default function SignIn() {
 
   return (
     <>
-      <SignInForm values={formValues} change={inputChange} submit={formSubmit} disabled={disabled} errors={formErrors} />
+      <SignInForm
+        values={formValues}
+        change={inputChange}
+        submit={formSubmit}
+        disabled={disabled}
+        errors={formErrors}
+      />
     </>
   );
 }
