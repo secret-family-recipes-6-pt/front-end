@@ -1,6 +1,15 @@
-import React from "react";
-import { Typography, Button, Card, makeStyles, CardContent, CardActions, Grid } from "@material-ui/core";
-
+import React, { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import {
+  Typography,
+  Button,
+  Card,
+  makeStyles,
+  CardContent,
+  CardActions,
+  Grid,
+} from "@material-ui/core";
+import AddEditRecipe from "../views/AddRecipe";
 
 const useStyles = makeStyles({
   root: {
@@ -20,14 +29,18 @@ export default function RecipeCard({ cardInfo }) {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          gutterBottom
+        >
           Secret Recipe
         </Typography>
         <Typography variant="h5" component="h2">
-          Title: {cardInfo.name}
+          Title: {cardInfo.recipe_name}
         </Typography>
         <Typography className={classes.pos} color="textPrimay">
-          Recipe Source: {cardInfo.source}
+          Recipe Source: {cardInfo.recipe_source}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
           Category: {cardInfo.category}
@@ -50,7 +63,7 @@ export default function RecipeCard({ cardInfo }) {
       <CardActions>
         <Grid container justify="space-between">
           <Grid item>
-            <Button color="primary" size="small">
+            <Button href="/EditRecipe" color="primary" size="small">
               Edit
             </Button>
           </Grid>

@@ -1,32 +1,41 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 
 import PrivateRoute from "./components/PrivateRoute";
 
 import SignUp from "./views/SignUp";
 import SignIn from "./views/SignIn";
 import Home from "./views/Home";
-import AddEditRecipe from "./views/AddEditRecipe";
+import AddRecipe from "./views/AddRecipe";
 
 import { RecipeContext } from "./context/RecipeContext";
+import { axiosWithAuth } from "./helpers/axiosWithAuth";
+import EditRecipe from "./views/EditRecipe";
 
 function App() {
-  const [recipe, setRecipe] = useState(null);
+  const initialValues = {
+    name: "",
+    source: "",
+    category: "",
+    description: "",
+    ingridients: "",
+    instructions: "",
+  };
+  const [recipe, setRecipe] = useState(initialValues);
+
   const providerValue = useMemo(
     () => ({ recipe, setRecipe }),
     [recipe, setRecipe]
   );
+
   return (
     <div className="App">
       <RecipeContext.Provider value={providerValue}>
         <Router>
           <Switch>
             <PrivateRoute exact path="/home" component={Home} />
-            <PrivateRoute
-              exact
-              path="/AddEditRecipe"
-              component={AddEditRecipe}
-            />
+            <PrivateRoute exact path="/AddRecipe" component={AddRecipe} />
+            <PrivateRoute exact path="/EditRecipe" component={EditRecipe} />
             <Route path="/signup">
               <SignUp />
             </Route>
