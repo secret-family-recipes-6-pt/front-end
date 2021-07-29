@@ -9,12 +9,16 @@ const useStyles = makeStyles({
   },
 
   dropdown: {
-    padding: "0 .5rem",
+    padding: "0 0rem",
     border: "none",
+
+    "& div[class = 'MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input'] " : {
+    padding: "0 2rem 0 .5rem",
+    } 
   },
 
   divider: {
-    margin: "0 .3rem",
+    margin: "0 .3rem 0 0",
   },
 
   searchInput: {
