@@ -13,20 +13,19 @@ import { axiosWithAuth } from "./helpers/axiosWithAuth";
 import EditRecipe from "./views/EditRecipe";
 
 function App() {
-  const initialValues = {
-    name: "",
-    source: "",
-    category: "",
-    description: "",
-    ingridients: "",
-    instructions: "",
-  };
+  const initialValues = [
+    {
+      name: "",
+      source: "",
+      category: "",
+      description: "",
+      ingredients: "",
+      instructions: "",
+    },
+  ];
   const [recipe, setRecipe] = useState(initialValues);
 
-  const providerValue = useMemo(
-    () => ({ recipe, setRecipe }),
-    [recipe, setRecipe]
-  );
+  const providerValue = useMemo(() => ({ recipe, setRecipe }), [recipe, setRecipe]);
 
   return (
     <div className="App">
