@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   Typography,
   Button,
@@ -9,7 +9,8 @@ import {
   CardActions,
   Grid,
 } from "@material-ui/core";
-import AddEditRecipe from "../views/AddRecipe";
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
+import axios from "axios";
 
 const useStyles = makeStyles({
   root: {
@@ -25,6 +26,9 @@ const useStyles = makeStyles({
 
 export default function RecipeCard({ cardInfo }) {
   const classes = useStyles();
+  const { id } = useParams();
+  console.log("id in recipecard component: ", id);
+  // console.log("card info id: ", cardInfo.id);
 
   return (
     <Card className={classes.root}>
@@ -61,16 +65,16 @@ export default function RecipeCard({ cardInfo }) {
       </CardContent>
 
       <CardActions>
-        <Grid container justify="space-between">
+        <Grid container justify="flex-end">
           <Grid item>
-            <Button href="/EditRecipe" color="primary" size="small">
-              Edit
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button color="secondary" size="small">
-              Delete
-            </Button>
+            <Link
+              to={`/EditRecipe/${cardInfo.id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <Button color="primary" size="small">
+                Edit
+              </Button>
+            </Link>
           </Grid>
         </Grid>
       </CardActions>

@@ -36,8 +36,21 @@ export default function SearchBar(props) {
   };
 
   return (
-    <Paper component="form" className={classes.root} variant="outlined" onChange={handleChange}>
-      <Select name="searchCategory" autoWidth={true} disableUnderline={true} className={classes.dropdown} defaultValue="all" placeholder="All Meals" onChange={handleChange}>
+    <Paper
+      component="form"
+      className={classes.root}
+      variant="outlined"
+      onChange={handleChange}
+    >
+      <Select
+        name="searchCategory"
+        autoWidth={true}
+        disableUnderline={true}
+        className={classes.dropdown}
+        defaultValue="all"
+        placeholder="All Meals"
+        onChange={handleChange}
+      >
         <MenuItem value="all">All Meals</MenuItem>
         <MenuItem value="Breakfast">Breakfast</MenuItem>
         <MenuItem value="Lunch">Lunch</MenuItem>
@@ -46,7 +59,11 @@ export default function SearchBar(props) {
         <MenuItem value="Snacks">Snacks</MenuItem>
       </Select>
       <Divider orientation="vertical" flexItem className={classes.divider} />
-      <InputBase name="searchTerm" placeholder="Search" className={`${classes.searchInput}`} />
+      <InputBase
+        name="searchTerm"
+        placeholder="Search"
+        className={`${classes.searchInput}`}
+      />
     </Paper>
   );
 }
