@@ -67,7 +67,7 @@ export default function AddRecipe() {
     e.preventDefault();
     // saveEdit(editColor);
 
-    axiosWithAuth
+    axiosWithAuth()
       .post(
         "https://secret-family-recipes6.herokuapp.com/api/recipes/user/:id",
         recipe
