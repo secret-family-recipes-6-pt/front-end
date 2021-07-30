@@ -10,7 +10,7 @@ export default function RecipeCards({ searchForm }) {
   const { recipe, setRecipe } = useContext(RecipeContext);
   useEffect(() => {
     axiosWithAuth()
-      .get("https://secret-family-recipes6.herokuapp.com/api/recipes")
+      .get("/recipes")
       .then((res) => {
         console.log("respone: ", res.data);
 
@@ -24,8 +24,9 @@ export default function RecipeCards({ searchForm }) {
   return (
     <Container>
       <Grid spacing={6} container justifyContent="center" alignItems="baseline">
-        {cardsInformation.map((cardInfo, index) => {
+        {recipe.map((cardInfo, index) => {
           if (searchCategory === "all" && searchTerm === "") {
+            // console.log("cardInfo: ", cardInfo);
             return (
               <Grid item key={index} xs={12} md={6} lg={4}>
                 <RecipeCard cardInfo={cardInfo} />

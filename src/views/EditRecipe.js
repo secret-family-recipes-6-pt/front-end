@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useContext } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   MenuItem,
@@ -12,6 +12,7 @@ import {
 import { RecipeContext } from "../context/RecipeContext";
 
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,8 @@ export default function EditRecipe() {
   const { recipe, setRecipe } = useContext(RecipeContext);
   const history = useHistory();
   const classes = useStyles();
+  const { id } = useParams();
+  console.log("id in edit component: ", id);
 
   const handleChange = (e) => {
     if (e.target.name === "Name") {
@@ -67,14 +70,23 @@ export default function EditRecipe() {
     e.preventDefault();
     // saveEdit(editColor);
 
-    axiosWithAuth
-      .post(
-        "https://secret-family-recipes6.herokuapp.com/api/recipes/user/:id",
-        recipe
-      )
+    axiosWithAuth()
+      .put("/recipes/:id", recipe)
+      // .put(`/recipes/${id}`, recipe)
       .then((res) => {
         console.log("happy path: ", res.data);
         // localStorage.setItem("token", res.data.token);
+        history.push("/home");
+      })
+      .catch((err) => {
+        console.log("sad path: ", err);
+      });
+  };
+  const handleDelete = () => {
+    axiosWithAuth()
+      .delete(`https://secret-family-recipes6.herokuapp.com/api/recipes/${id}`)
+      .then(() => {
+        console.log("Deleted item succefully.");
         history.push("/home");
       })
       .catch((err) => {
@@ -176,12 +188,34 @@ export default function EditRecipe() {
             />
           </div>
           <div>
-            <Button onClick={handleSubmit} variant="contained">
-              Save
-            </Button>
-            <Button onClick={handleCancel} variant="contained">
-              Cancel
-            </Button>
+            <Grid container justify="space-between">
+              {" "}
+              <Grid item>
+                <Button
+                  onClick={handleSubmit}
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                >
+                  Save
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button onClick={handleCancel} variant="contained" size="small">
+                  Cancel
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  onClick={handleDelete}
+                  variant="contained"
+                  color="secondary"
+                  size="small"
+                >
+                  Delete
+                </Button>
+              </Grid>
+            </Grid>
           </div>
         </Grid>
       </Grid>

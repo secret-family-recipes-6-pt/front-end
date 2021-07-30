@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -35,7 +35,7 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/home" component={Home} />
             <PrivateRoute exact path="/AddRecipe" component={AddRecipe} />
-            <PrivateRoute exact path="/EditRecipe" component={EditRecipe} />
+            <PrivateRoute exact path="/EditRecipe/:id" component={EditRecipe} />
             <Route path="/signup">
               <SignUp />
             </Route>
