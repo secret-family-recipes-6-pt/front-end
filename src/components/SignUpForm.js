@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { Grid, Paper, Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
@@ -30,9 +30,12 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUpForm({ values, change, submit, disabled, errors }) {
   const classes = useStyles();
 
+  let history = useHistory();
+
   const onSubmit = (evt) => {
     evt.preventDefault();
     submit();
+    history.push("/");
   };
 
   const onChange = (evt) => {
