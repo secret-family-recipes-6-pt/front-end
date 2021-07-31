@@ -15,6 +15,10 @@ const useStyles = makeStyles({
 
     "& div[class = 'MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input'] " : {
     padding: "0 2rem 0 .5rem",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%"
     } 
   },
 
