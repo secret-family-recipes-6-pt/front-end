@@ -16,7 +16,10 @@ export default function RecipeCards({ searchForm }) {
 
         setRecipe(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        debugger;
+      });
   }, []);
   console.log("recipes: ", recipe);
   console.log("Dummy data: ", cardsInformation);
@@ -32,19 +35,13 @@ export default function RecipeCards({ searchForm }) {
                 <RecipeCard cardInfo={cardInfo} />
               </Grid>
             );
-          } else if (
-            cardInfo.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-            (cardInfo.category === searchCategory || searchCategory === "all")
-          ) {
+          } else if (cardInfo.name.toLowerCase().includes(searchTerm.toLowerCase()) && (cardInfo.category === searchCategory || searchCategory === "all")) {
             return (
               <Grid item key={index} xs={12} md={6} lg={4}>
                 <RecipeCard cardInfo={cardInfo} />
               </Grid>
             );
-          } else if (
-            searchTerm === "" &&
-            cardInfo.category === searchCategory
-          ) {
+          } else if (searchTerm === "" && cardInfo.category === searchCategory) {
             return (
               <Grid item key={index} xs={12} md={6} lg={4}>
                 <RecipeCard cardInfo={cardInfo} />
