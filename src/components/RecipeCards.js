@@ -27,7 +27,7 @@ export default function RecipeCards({ searchForm }) {
   return (
     <Container>
       <Grid spacing={6} container justifyContent="center" alignItems="baseline">
-        {recipe.map((cardInfo, index) => {
+        {cardsInformation.map((cardInfo, index) => {
           if (searchCategory === "all" && searchTerm === "") {
             // console.log("cardInfo: ", cardInfo);
             return (

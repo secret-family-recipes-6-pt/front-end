@@ -6,15 +6,24 @@ const useStyles = makeStyles({
   root: {
     display: "flex",
     width: "40%",
+    margin: "0 -13rem 0 0"
   },
 
   dropdown: {
-    padding: "0 .5rem",
+    padding: "0 0rem",
     border: "none",
+
+    "& div[class = 'MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input'] " : {
+    padding: "0 2rem 0 .5rem",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%"
+    } 
   },
 
   divider: {
-    margin: "0 .3rem",
+    margin: "0 .3rem 0 0",
   },
 
   searchInput: {
