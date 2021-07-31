@@ -6,6 +6,7 @@ const useStyles = makeStyles({
   root: {
     display: "flex",
     width: "40%",
+    margin: "0 -13rem 0 0"
   },
 
   dropdown: {
