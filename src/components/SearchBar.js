@@ -1,25 +1,25 @@
+import React, { useState } from "react";
 import { InputBase, Paper, Select, MenuItem, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     display: "flex",
-    width: "85%",
-    // margin: "1rem auto",
-    margin: "auto",
+    width: "40%",
+    margin: "0 -13rem 0 0"
   },
 
   dropdown: {
     padding: "0 0rem",
     border: "none",
 
-    "& div[class = 'MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input'] ": {
-      padding: "0 2rem 0 .5rem",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100%",
-    },
+    "& div[class = 'MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input'] " : {
+    padding: "0 2rem 0 .5rem",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%"
+    } 
   },
 
   divider: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   searchInput: {
     width: "100%",
   },
-}));
+});
 
 export default function SearchBar(props) {
   const classes = useStyles();
@@ -41,8 +41,21 @@ export default function SearchBar(props) {
   };
 
   return (
-    <Paper component="form" className={classes.root} variant="outlined" onChange={handleChange}>
-      <Select name="searchCategory" autoWidth={true} disableUnderline={true} className={classes.dropdown} defaultValue="all" placeholder="All Meals" onChange={handleChange}>
+    <Paper
+      component="form"
+      className={classes.root}
+      variant="outlined"
+      onChange={handleChange}
+    >
+      <Select
+        name="searchCategory"
+        autoWidth={true}
+        disableUnderline={true}
+        className={classes.dropdown}
+        defaultValue="all"
+        placeholder="All Meals"
+        onChange={handleChange}
+      >
         <MenuItem value="all">All Meals</MenuItem>
         <MenuItem value="Breakfast">Breakfast</MenuItem>
         <MenuItem value="Lunch">Lunch</MenuItem>
@@ -51,7 +64,11 @@ export default function SearchBar(props) {
         <MenuItem value="Snacks">Snacks</MenuItem>
       </Select>
       <Divider orientation="vertical" flexItem className={classes.divider} />
-      <InputBase name="searchTerm" placeholder="Search" className={`${classes.searchInput}`} />
+      <InputBase
+        name="searchTerm"
+        placeholder="Search"
+        className={`${classes.searchInput}`}
+      />
     </Paper>
   );
 }
