@@ -9,10 +9,10 @@ import Home from "./views/Home";
 import AddRecipe from "./views/AddRecipe";
 
 import { RecipeContext } from "./context/RecipeContext";
-import { axiosWithAuth } from "./helpers/axiosWithAuth";
+// import { axiosWithAuth } from "./helpers/axiosWithAuth"; UNUSED VARIABLE
 import EditRecipe from "./views/EditRecipe";
 
-function App() {
+export default function App() {
   const initialValues = [
     {
       name: "",
@@ -28,24 +28,18 @@ function App() {
   const providerValue = useMemo(() => ({ recipe, setRecipe }), [recipe, setRecipe]);
 
   return (
-    <div className="App">
+    <>
       <RecipeContext.Provider value={providerValue}>
         <Router>
           <Switch>
-            <PrivateRoute exact path="/home" component={Home} />
-            <PrivateRoute exact path="/AddRecipe" component={AddRecipe} />
-            <PrivateRoute exact path="/EditRecipe/:id" component={EditRecipe} />
-            <Route path="/signup">
-              <SignUp />
-            </Route>
-            <Route path="/">
-              <SignIn />
-            </Route>
+            <PrivateRoute path="/EditRecipe/:id" component={EditRecipe} />
+            <PrivateRoute path="/AddRecipe" component={AddRecipe} />
+            <PrivateRoute path="/home" component={Home} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/" component={SignIn} />
           </Switch>
         </Router>
       </RecipeContext.Provider>
-    </div>
+    </>
   );
 }
-
-export default App;

@@ -6,7 +6,6 @@ import axios from "axios";
 import schema from "../validation/signUpSchema";
 import SignUpForm from "../components/SignUpForm";
 
-
 const initialFormValues = {
   username: "",
   email: "",
@@ -60,17 +59,14 @@ export default function SignUp() {
 
   const registerUser = (newUser) => {
     axios
-      .post(
-        "https://secret-family-recipes6.herokuapp.com/api/auth/register",
-        newUser
-      )
+      .post("https://secret-family-recipes6.herokuapp.com/api/auth/register", newUser)
       .then((res) => {
-        console.log("happy path: ", res.data);
+        // console.log("happy path: ", res.data);
         localStorage.setItem("token", res.data.token);
         history.push("/home");
       })
       .catch((err) => {
-        console.log("sad path: ", err);
+        // console.log("sad path: ", err);
         debugger;
       })
       .finally(setFormValues(initialFormValues));
@@ -87,13 +83,7 @@ export default function SignUp() {
 
   return (
     <>
-      <SignUpForm
-        values={formValues}
-        change={inputChange}
-        submit={formSubmit}
-        disabled={disabled}
-        errors={formErrors}
-      />
+      <SignUpForm values={formValues} change={inputChange} submit={formSubmit} disabled={disabled} errors={formErrors} />
     </>
   );
 }

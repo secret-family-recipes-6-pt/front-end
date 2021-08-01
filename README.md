@@ -1,6 +1,6 @@
 # Maintain Your Recipes!
 
-This project was created as a place for you to upload and maintain different recipes you may have, particularly secret ones!
+This project was created as a place for you to upload and maintain different recipies you may have, particularly your secret ones!
 
 ## Installation
 

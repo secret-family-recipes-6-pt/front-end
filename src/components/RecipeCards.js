@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { Container, Grid } from "@material-ui/core";
-import { cardsInformation } from "../dummyData";
+// import { cardsInformation } from "../dummyData"; UNUSED VARIABLE
 import RecipeCard from "./RecipeCard";
 import { RecipeContext } from "../context/RecipeContext";
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
@@ -12,22 +12,22 @@ export default function RecipeCards({ searchForm }) {
     axiosWithAuth()
       .get("/recipes")
       .then((res) => {
-        console.log("respone: ", res.data);
+        // console.log("respone: ", res.data);
 
         setRecipe(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         debugger;
       });
   }, []);
-  console.log("recipes: ", recipe);
-  console.log("Dummy data: ", cardsInformation);
+  // console.log("recipes: ", recipe);
+  // console.log("Dummy data: ", cardsInformation);
 
   return (
     <Container>
       <Grid spacing={6} container justifyContent="center" alignItems="baseline">
-        {cardsInformation.map((cardInfo, index) => {
+        {recipe.map((cardInfo, index) => {
           if (searchCategory === "all" && searchTerm === "") {
             // console.log("cardInfo: ", cardInfo);
             return (
