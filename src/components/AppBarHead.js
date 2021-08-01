@@ -6,7 +6,7 @@ export default function AppBarHead({ searchForm, setSearchForm }) {
   const history = useHistory();
 
   const logout = () => {
-    // console.log("Logged out success!");
+    console.log("Logged out success!");
     localStorage.removeItem("token");
     history.push("/");
   };
