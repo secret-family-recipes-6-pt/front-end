@@ -74,7 +74,7 @@ export default function EditRecipe() {
       // .put(`/recipes/${id}`, recipe)
       .then((res) => {
         // console.log("happy path: ", res.data);
-        // localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.token);
         history.push("/home");
       })
       .catch((err) => {
