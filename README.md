@@ -1,6 +1,6 @@
 # Maintain Your Recipes!
 
-This project was created as a place for you to upload and maintain different recipies you may have, particularly your secret ones!
+This project was created as a place for you to upload and maintain different recipes you may have, particularly secret ones!
 
 ## Installation
 
@@ -12,7 +12,20 @@ This project was created as a place for you to upload and maintain different rec
 
 When on the website you will be greeted with a login and signup page. Once you have created or logged into your user, you will see a base set or recipies. You can edit or delete them and add your own recipies if you choose. We also have a search bar if you want to locate that special recipe!
 
+## Contributing
+
+For any changes you decide to make, first create an issue and branch prefaced with the type of issue you will be fixing. For example, if you have an enhancement your branch should be named `enhancement/enhancement-title`. Lastly, just make a pull request and select a reviewer.
+
+## Architecture of Code
+
+- `App.js` is used to render different components using Private Routes and React Router.
+- Components that take up an entire page are located in the folder `views`. Some examples would be the login page, signin page, and home page.
+- The other react components are stored in the `components` folder that you can navigate.
+- A majority of the styling for the website was done using Material UI.
+
 # Base URL: https://secret-family-recipes6.herokuapp.com
+
+Below are the endpoints used in our backend.
 
 ## Login and Register
 
