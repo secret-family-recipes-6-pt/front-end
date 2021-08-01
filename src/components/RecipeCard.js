@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Typography, Button, Card, makeStyles, CardContent, CardActions, Collapse, Grid, IconButton } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import clsx from "clsx";
@@ -32,14 +32,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RecipeCard({ cardInfo }) {
   const classes = useStyles();
-  const { id } = useParams();
+  // const { id } = useParams(); UNUSED VARIABLE
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  console.log("id in recipecard component: ", id);
+  // console.log("id in recipecard component: ", id);
   // console.log("card info id: ", cardInfo.id);
 
   return (
