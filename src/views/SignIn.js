@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
-import { axiosWithAuth } from "../helpers/axiosWithAuth";
+// import { axiosWithAuth } from "../helpers/axiosWithAuth"; UNUSED VARIABLE
 
 import schema from "../validation/SignInSchema";
 import SignInForm from "../components/SignInForm";
@@ -95,12 +95,8 @@ export default function SignIn() {
   const logInUser = (userInformation) => {
     // should I check if allUsers includes userInformation before or after the axios.get()?
     axios
-      .post(
-        "https://secret-family-recipes6.herokuapp.com/api/auth/login",
-        userInformation
-      )
+      .post("https://secret-family-recipes6.herokuapp.com/api/auth/login", userInformation)
       .then((res) => {
-
         // console.log("happy path: ", res.data);
         // console.log("MY token", res.data.token);
         localStorage.setItem("token", res.data.token);
@@ -125,13 +121,7 @@ export default function SignIn() {
 
   return (
     <>
-      <SignInForm
-        values={formValues}
-        change={inputChange}
-        submit={formSubmit}
-        disabled={disabled}
-        errors={formErrors}
-      />
+      <SignInForm values={formValues} change={inputChange} submit={formSubmit} disabled={disabled} errors={formErrors} />
     </>
   );
 }

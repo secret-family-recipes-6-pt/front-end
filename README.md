@@ -1,3 +1,17 @@
+# Maintain Your Recipes!
+
+This project was created as a place for you to upload and maintain different recipies you may have, particularly your secret ones!
+
+## Installation
+
+- Clone from the master branch
+- execute `npm install`
+- execute `yarn start` or `npm start` to run the website
+
+## Usage
+
+When on the website you will be greeted with a login and signup page. Once you have created or logged into your user, you will see a base set or recipies. You can edit or delete them and add your own recipies if you choose. We also have a search bar if you want to locate that special recipe!
+
 # Base URL: https://secret-family-recipes6.herokuapp.com
 
 ## Login and Register
